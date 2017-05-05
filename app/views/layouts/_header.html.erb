@@ -1,6 +1,6 @@
 <div class="wrapper">
 
-	<div class="sidebar" data-color="purple">
+	<div class="sidebar" data-color="green">
 			<!--
 		        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -9,7 +9,7 @@
 
 		    <div class="logo">
 		    	<a href="/" class="simple-text">
-		    	Academation
+		    		Academation
 		    	</a>
 		    </div>
 
@@ -94,11 +94,13 @@
 									<p class="hidden-lg hidden-md">Notifications</p>
 								</a>
 								<ul class="dropdown-menu">
-									<li><a href="#">Mike John responded to your email</a></li>
-									<li><a href="#">You have 5 new tasks</a></li>
-									<li><a href="#">You're now friend with Andrew</a></li>
-									<li><a href="#">Another Notification</a></li>
-									<li><a href="#">Another One</a></li>
+									<% if user_signed_in? %>
+									<li class="nav-item"><%= link_to "Account", edit_user_registration_path, class: "nav-link" %></li>
+									<li class="nav-item"><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+									<% else %>
+									<li class="nav-item"><%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %></li>
+									<li class="nav-item"><%= link_to "Login", new_user_session_path, class: "nav-link" %></li>
+									<% end %>
 								</ul>
 							</li>
 							<li>
