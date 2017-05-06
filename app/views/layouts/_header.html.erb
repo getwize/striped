@@ -1,6 +1,6 @@
 <div class="wrapper">
 
-	<div class="sidebar" data-color="green">
+	<div class="sidebar" data-color="purple">
 			<!--
 		        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -16,49 +16,43 @@
 		    <div class="sidebar-wrapper">
 		    	<ul class="nav">
 		    		<li class="active">
-		    			<a href="dashboard.html">
+		    			<a href="/">
 		    				<i class="material-icons">dashboard</i>
 		    				<p>Dashboard</p>
 		    			</a>
 		    		</li>
 		    		<li>
-		    			<a href="user.html">
+		    			<a href="/users/edit">
 		    				<i class="material-icons">person</i>
 		    				<p>User Profile</p>
 		    			</a>
 		    		</li>
 		    		<li>
-		    			<a href="table.html">
+		    			<a href="#">
 		    				<i class="material-icons">content_paste</i>
-		    				<p>Table List</p>
+		    				<p>Students</p>
 		    			</a>
 		    		</li>
 		    		<li>
-		    			<a href="typography.html">
+		    			<a href="#">
 		    				<i class="material-icons">library_books</i>
-		    				<p>Typography</p>
+		    				<p>Reports</p>
 		    			</a>
 		    		</li>
 		    		<li>
-		    			<a href="icons.html">
+		    			<a href="#">
 		    				<i class="material-icons">bubble_chart</i>
-		    				<p>Icons</p>
+		    				<p>List Item</p>
 		    			</a>
 		    		</li>
 		    		<li>
-		    			<a href="maps.html">
+		    			<a href="#">
 		    				<i class="material-icons">location_on</i>
-		    				<p>Maps</p>
-		    			</a>
-		    		</li>
-		    		<li>
-		    			<a href="notifications.html">
-		    				<i class="material-icons text-gray">notifications</i>
-		    				<p>Notifications</p>
+		    				<p>List Item</p>
 		    			</a>
 		    		</li>
 		    		<li class="active-pro">
-		    			<a href="upgrade.html">
+		    			<a href="#">
 		    				<i class="material-icons">unarchive</i>
 		    				<p>Upgrade to PRO</p>
 		    			</a>
@@ -82,44 +76,25 @@
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li>
-								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="material-icons">dashboard</i>
-									<p class="hidden-lg hidden-md">Dashboard</p>
+								<a href="#">
+									<i class="material-icons">query_builder</i> <%= Time.now.strftime("%m/%d/%Y %H:%M %p") %>
 								</a>
 							</li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="material-icons">notifications</i>
-									<span class="notification">5</span>
-									<p class="hidden-lg hidden-md">Notifications</p>
+									<i class="material-icons">person</i> Account
 								</a>
 								<ul class="dropdown-menu">
 									<% if user_signed_in? %>
-									<li class="nav-item"><%= link_to "Account", edit_user_registration_path, class: "nav-link" %></li>
-									<li class="nav-item"><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+									<li class="nav-item"><%= link_to "Account", edit_user_registration_path %></li>
+									<li class="nav-item"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
 									<% else %>
-									<li class="nav-item"><%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %></li>
-									<li class="nav-item"><%= link_to "Login", new_user_session_path, class: "nav-link" %></li>
+									<li class="nav-item"><%= link_to "Sign Up", new_user_registration_path %></li>
+									<li class="nav-item"><%= link_to "Login", new_user_session_path %></li>
 									<% end %>
 								</ul>
 							</li>
-							<li>
-								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="material-icons">person</i>
-									<p class="hidden-lg hidden-md">Profile</p>
-								</a>
-							</li>
 						</ul>
-
-						<form class="navbar-form navbar-right" role="search">
-							<div class="form-group  is-empty">
-								<input type="text" class="form-control" placeholder="Search">
-								<span class="material-input"></span>
-							</div>
-							<button type="submit" class="btn btn-white btn-round btn-just-icon">
-								<i class="material-icons">search</i><div class="ripple-container"></div>
-							</button>
-						</form>
 					</div>
 				</div>
 			</nav>

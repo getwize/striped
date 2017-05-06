@@ -1,13 +1,16 @@
 class PagesController < ApplicationController
-  def home
-  end
+	before_action :authenticate_user!
 
-  def about
-  end
+	def home
+		@users = User.all
+	end
 
-  def contact
-  end
+	def about
+	end
 
-  def blog
-  end
+	def contact
+	end
+
+	def blog
+	end
 end
