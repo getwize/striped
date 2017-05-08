@@ -1,0 +1,174 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="card">
+				<div class="card-header" data-background-color="purple">
+					<div class="row">
+						<div class="col-md-6">
+							<h4 class="title">Student Profile</h4>
+							<p class="category">Complete or update student profile</p>
+						</div>
+						<div class="col-md-6 text-right">
+							<%= link_to '<i class="material-icons">edit</i> Edit'.html_safe, edit_student_path, class: "btn btn-primary" %>
+							<%= link_to '<i class="material-icons">navigate_before</i> Back'.html_safe, owner_path, class: "btn btn-primary" %>
+						</div>
+					</div>
+				</div>
+
+				<div class="card-content">
+
+					<%= form_for(@student) do |f| %>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group label-floating">
+								<label class="control-label">First Name</label>
+								<%= f.text_field :first_name, class: "form-control" %>
+								<span class="material-input"></span>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group label-floating">
+								<label class="control-label">Last Name</label>
+								<%= f.text_field :last_name, class: "form-control" %>
+								<span class="material-input"></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group label-floating">
+								<label class="control-label">Email</label>
+								<%= f.email_field :email, class: "form-control" %>
+								<span class="material-input"></span>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group label-floating">
+								<label class="control-label">Phone Number</label>
+								<%= f.text_field :phone_number, class: "form-control" %>
+								<span class="material-input"></span>
+							</div>
+						</div>
+					</div>  
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group label-floating">
+								<label class="control-label">Street Address</label>
+								<%= f.text_field :street_address, class: "form-control" %>
+								<span class="material-input"></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group label-floating">
+								<label class="control-label">City</label>
+								<%= f.text_field :city, class: "form-control" %>
+								<span class="material-input"></span>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group label-floating">
+								<label class="control-label">State</label>
+								<%= f.text_field :state, class: "form-control" %>
+								<span class="material-input"></span>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group label-floating">
+								<label class="control-label">Zip</label>
+								<%= f.text_field :zip, class: "form-control" %>
+								<span class="material-input"></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group label-floating">
+								<label class="control-label">Emergency Contact</label>
+								<%= f.text_field :emergency_contact_name, class: "form-control" %>
+								<span class="material-input"></span>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group label-floating">
+								<label class="control-label">Emergency Contact Number</label>
+								<%= f.text_field :emergency_contact_phone, class: "form-control" %>
+								<span class="material-input"></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group label-floating">
+								<label class="control-label">Relationship</label>
+								<%= f.text_field :emergency_contact_relationship, class: "form-control" %>
+								<span class="material-input"></span>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group label-floating">
+								<label class="control-label">Allergies / Medical</label>
+								<%= f.text_field :emergency_medical_info, class: "form-control" %>
+								<span class="material-input"></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group label-floating">
+								<label class="control-label">Belt Size</label>
+								<%= f.text_field :belt_size, class: "form-control" %>
+								<span class="material-input"></span>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group label-floating">
+								<label class="control-label">Uniform Size</label>
+								<%= f.text_field :uniform_size, class: "form-control" %>
+								<span class="material-input"></span>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group label-floating">
+								<label class="control-label">Birthday</label>
+								<%= f.date_field :birthday, class: "form-control datetimepicker" %>
+								<span class="material-input"></span>
+							</div>
+						</div>
+					</div>  
+
+					<% end %>
+
+				</div>
+
+
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="card card-profile">
+				<div class="card-avatar">
+					<a href="#">
+						<%= image_tag "card-profile1.jpg" %>
+					</a>
+				</div>
+
+				<div class="card-content">
+					<h6 class="category text-gray">Member Since <%= @student.created_at.strftime("%m/%d/%Y") %></h6>
+					<h4 class="card-title"><%= @student.first_name %> <%= @student.last_name %></h4>
+					<p class="card-description">
+						Trains at <%= current_user.school_name %>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

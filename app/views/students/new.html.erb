@@ -1,0 +1,17 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="card">
+				<div class="card-header" data-background-color="purple">
+					<div class="row">
+						<div class="col-md-6">
+							<h4 class="title">Add Student</h4>
+							<p class="category">Create New Student Record</p>
+						</div>
+						<div class="col-md-6 text-right">
+							<%= link_to '<i class="material-icons">navigate_before</i> Back'.html_safe, owner_path, class: "btn btn-primary" %>
+						</div>
+					</div>
+				</div>
+
+				<%= render 'form', student: @student %>

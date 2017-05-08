@@ -1,0 +1,148 @@
+<div class="card-content">
+
+  <%= form_for(student) do |f| %>
+  <% if student.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+    <ul>
+      <% student.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group label-floating">
+        <label class="control-label">First Name</label>
+        <%= f.text_field :first_name, class: "form-control" %>
+        <span class="material-input"></span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group label-floating">
+        <label class="control-label">Last Name</label>
+        <%= f.text_field :last_name, class: "form-control" %>
+        <span class="material-input"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group label-floating">
+        <label class="control-label">Email</label>
+        <%= f.email_field :email, class: "form-control" %>
+        <span class="material-input"></span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group label-floating">
+        <label class="control-label">Phone Number</label>
+        <%= f.text_field :phone_number, class: "form-control" %>
+        <span class="material-input"></span>
+      </div>
+    </div>
+  </div>  
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group label-floating">
+        <label class="control-label">Street Address</label>
+        <%= f.text_field :street_address, class: "form-control" %>
+        <span class="material-input"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group label-floating">
+        <label class="control-label">City</label>
+        <%= f.text_field :city, class: "form-control" %>
+        <span class="material-input"></span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group label-floating">
+        <label class="control-label">State</label>
+        <%= f.text_field :state, class: "form-control" %>
+        <span class="material-input"></span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group label-floating">
+        <label class="control-label">Zip</label>
+        <%= f.text_field :zip, class: "form-control" %>
+        <span class="material-input"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group label-floating">
+        <label class="control-label">Emergency Contact</label>
+        <%= f.text_field :emergency_contact_name, class: "form-control" %>
+        <span class="material-input"></span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group label-floating">
+        <label class="control-label">Emergency Contact Number</label>
+        <%= f.text_field :emergency_contact_phone, class: "form-control" %>
+        <span class="material-input"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group label-floating">
+        <label class="control-label">Relationship</label>
+        <%= f.text_field :emergency_contact_relationship, class: "form-control" %>
+        <span class="material-input"></span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group label-floating">
+        <label class="control-label">Allergies / Medical</label>
+        <%= f.text_field :emergency_medical_info, class: "form-control" %>
+        <span class="material-input"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group label-floating">
+        <label class="control-label">Belt Size</label>
+        <%= f.text_field :belt_size, class: "form-control" %>
+        <span class="material-input"></span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group label-floating">
+        <label class="control-label">Uniform Size</label>
+        <%= f.text_field :uniform_size, class: "form-control" %>
+        <span class="material-input"></span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group label-floating">
+        <label class="control-label">Birthday</label>
+        <%= f.date_field :birthday, class: "form-control datetimepicker" %>
+        <span class="material-input"></span>
+      </div>
+    </div>
+  </div>  
+
+  <div class="form-group">
+    <%= f.submit "Update Student Profile", class: "btn btn-success" %>
+  </div>
+  <% end %>
+
+</div>
+

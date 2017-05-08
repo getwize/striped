@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170504063916) do
+ActiveRecord::Schema.define(version: 20170507195646) do
+
+  create_table "students", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone_number"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "user_id"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "emergency_contact_name"
+    t.string   "emergency_contact_relationship"
+    t.string   "emergency_contact_phone"
+    t.string   "emergency_medical_info"
+    t.string   "uniform_size"
+    t.string   "belt_size"
+    t.date     "birthday"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

@@ -18,6 +18,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 gem 'devise'
 gem 'material_design_lite-sass'
+gem "font-awesome-rails"
 
 group :production do
 	gem 'pg'
