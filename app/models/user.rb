@@ -10,5 +10,5 @@ class User < ApplicationRecord
   
   belongs_to :plan
   has_many :students, dependent: :destroy
- 
+  has_many :splans
 end
