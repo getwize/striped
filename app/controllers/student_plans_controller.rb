@@ -8,7 +8,7 @@ class StudentPlansController < ApplicationController
   	 @user = current_user
 	   @plan = Splan.new(plans_params)
      
-     Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+     Stripe.api_key = ENV['STRIPE_SECRET_KEY_CLIENT']
      
       Stripe::Plan.create(
       :amount => @plan.amount,
