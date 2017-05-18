@@ -6,10 +6,9 @@ class StudentPlansController < ApplicationController
 #creates a students plan on stripe
   def create
   	 @user = current_user
-	   @plan = Splan.new(plans_params)
+	   @plan = @user.splans.new(plans_params)
      
      Stripe.api_key = ENV['Javier_Secret_Key']
-
      
       Stripe::Plan.create(
       :amount => @plan.amount,
@@ -18,6 +17,7 @@ class StudentPlansController < ApplicationController
       :id => @plan.stripe_id,
       :currency =>@plan.currency
       )
+    
 	   @plan.save
      redirect_to root_path
   		
