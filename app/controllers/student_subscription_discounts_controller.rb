@@ -3,7 +3,8 @@ class StudentSubscriptionDiscountsController < ApplicationController
 	def update
 		@student = Student.find_by(id: params[:id])
 		@plan = Splan.find_by!(id: @student.splan_id)
-		Stripe.api_key = current_user.access_code
+		Stripe.api_key = ENV['Javier_Secret_Key']
+
 
 		Stripe::Subscription.create(
 			  :customer => @student.stripe_id,

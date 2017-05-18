@@ -4,7 +4,8 @@ class SubscriptionsController < ApplicationController
 #resubscribes a user who has cancelled
 	def create
 		if Rails.env.production?
-     		 Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO']
+     		 Stripe.api_key = ENV['Javier_Secret_Key']
+
     	else
      		 Stripe.api_key = ENV['STRIPE_SECRET_KEY']
      	end
@@ -25,7 +26,8 @@ class SubscriptionsController < ApplicationController
 
 		
 		if Rails.env.production?
-     		 Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO']
+     		 Stripe.api_key = ENV['Javier_Secret_Key']
+]
     	else
      		 Stripe.api_key = ENV['STRIPE_SECRET_KEY']
      	end
@@ -39,7 +41,8 @@ class SubscriptionsController < ApplicationController
 	#cancels/pauses a plan
 	def destroy
 		if Rails.env.production?
-     		 Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO']
+     		 Stripe.api_key = ENV['Javier_Secret_Key']
+
     	else
      		 Stripe.api_key = ENV['STRIPE_SECRET_KEY']
      	end

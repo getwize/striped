@@ -12,7 +12,8 @@ class StudentSubscriptionsController < ApplicationController
 			
 		    @plan = Splan.find_by!(id: @student.splan_id)
 
-		    Stripe.api_key = current_user.access_code
+		    Stripe.api_key = ENV['Javier_Secret_Key']
+
 		      token = params[:stripeToken]
 
 		      customer = Stripe::Customer.create(
@@ -30,7 +31,8 @@ class StudentSubscriptionsController < ApplicationController
 		      redirect_to root_path
 
       else
-		Stripe.api_key = current_user.access_code
+		Stripe.api_key = ENV['Javier_Secret_Key']
+
 		@plan = Splan.find_by!(id: @student.splan_id)
 		 subscription = Stripe::Subscription.retrieve(@student.sub_id)
 		 subscription.plan = @plan.stripe_id
@@ -43,7 +45,7 @@ class StudentSubscriptionsController < ApplicationController
 	def destroy
 		@user = current_user
 		@student = Student.find_by(id: params[:id])
-		Stripe.api_key = @user.access_code
+		Stripe.api_key = ENV['Javier_Secret_Key']
 		 subscription = Stripe::Subscription.retrieve(@student.sub_id)
 		 subscription.delete(:at_period_end => true)
 
