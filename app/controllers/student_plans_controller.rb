@@ -7,6 +7,7 @@ class StudentPlansController < ApplicationController
   def create
   	 @user = current_user
 	   @plan = Splan.new(plans_params)
+     
      Stripe.api_key = @user.access_code
 
       Stripe::Plan.create(

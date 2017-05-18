@@ -196,6 +196,10 @@
                    <div class="actions">
                     <%= f.submit "Reactivate" %>
                   </div>
+
+                   <%=form_for :connect, url: user_stripe_connect_omniauth_authorize_path do |f| %>
+                        <%= f.submit "connect to stripe", class: "btn btn-primary" %>
+                   <%end%>
             <% end %> 
           </p>
 
