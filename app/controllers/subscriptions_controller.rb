@@ -27,7 +27,7 @@ class SubscriptionsController < ApplicationController
 		
 		if Rails.env.production?
      		 Stripe.api_key = ENV['Javier_Secret_Key']
-]
+
     	else
      		 Stripe.api_key = ENV['STRIPE_SECRET_KEY']
      	end
