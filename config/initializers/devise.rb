@@ -7,7 +7,21 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '2ee30fa80681c95a97f8d7b6906bf69547d2544e30d0e01c5fee76f78a66185c364d3863ad6bfed1419df598d65a2474c33c98c8f6f60d3f6f6628d708e4e67c'
+  if Rails.env.production?
 
+  config.omniauth :stripe_connect,
+      ENV['STRIPE_CONNECT_CLIENT_ID_PRO'],
+      ENV['STRIPE_SECRET_KEY_PRO'],
+      :scope => 'read_write',
+      :stripe_landing => 'login'
+  else
+
+ config.omniauth :stripe_connect,
+      ENV['STRIPE_CONNECT_CLIENT_ID_DEV'],
+      ENV['STRIPE_SECRET_KEY'],
+      :scope => 'read_write',
+      :stripe_landing => 'login'
+  end
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class

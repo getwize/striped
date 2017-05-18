@@ -12,6 +12,15 @@
     </ul>
   </div>
   <% end %>
+    <div class="input-group">
+        <span class="input-group-addon">
+            
+        </span>
+        Plan to subscribe to
+        <%= f.collection_select(:splan_id , Splan.all, :id, :name, class: "form-control") %>
+            <span class="material-input"></span>
+    </div>
+
 
   <div class="row">
     <div class="col-md-6">

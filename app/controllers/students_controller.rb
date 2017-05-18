@@ -24,6 +24,10 @@ class StudentsController < ApplicationController
 
   # GET /students/1/edit
   def edit
+    @user = current_user
+    @student = Student.find_by(id: params[:id])
+    @plan = Splan.find_by!(id: @student.splan_id)
+    @publishable_key = @user.publishable_key
   end
 
   # POST /students
@@ -45,6 +49,8 @@ class StudentsController < ApplicationController
   # PATCH/PUT /students/1
   # PATCH/PUT /students/1.json
   def update
+    
+
     respond_to do |format|
       if @student.update(student_params)
         format.html { redirect_to @student, notice: 'Student was successfully updated.' }
@@ -74,6 +80,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:first_name, :last_name, :email, :phone_number, :street_address, :city, :state, :zip, :emergency_contact_name, :emergency_contact_phone, :emergency_contact_relationship, :emergency_medical_info, :belt_size, :uniform_size, :birthday)
+      params.require(:student).permit(:splan_id, :first_name, :last_name, :email, :phone_number, :street_address, :city, :state, :zip, :emergency_contact_name, :emergency_contact_phone, :emergency_contact_relationship, :emergency_medical_info, :belt_size, :uniform_size, :birthday)
     end
 end

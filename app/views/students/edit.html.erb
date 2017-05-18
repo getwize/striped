@@ -15,6 +15,53 @@
 				</div>
 
 				<%= render 'form', student: @student %>
+				<%= link_to 'Create student plans', student_plans_new_path%>
+
+			 <%=form_for :connect, url: user_stripe_connect_omniauth_authorize_path do |f| %>
+                        <%= f.submit "connect to stripe", class: "btn btn-primary" %>
+              <%end%>
+
+              <p>
+          <%= form_tag student_subscription_path , method: "put" do %>
+		  <article>
+		    <% if flash[:error].present? %>
+		      <div id="error_explanation">
+		        <p><%= flash[:error] %></p>
+		      </div>
+		    <% end %>
+		    <label class="amount">
+		      <span>Amount: $<%=@plan.amount/100%>.00</span>
+		    </label>
+		  </article>
+
+	  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+	          data-key="<%= @publishable_key %>"
+	          data-description="A month's subscription"
+	          data-amount= "<%@plan.amount%>"
+	          data-email= "<%=@student.email%>"
+	          data-panel-label = "pay"
+	          data-label= "subscribe student"
+	          data-locale="auto"></script>
+	<% end %>
+          </p>
+          <p>
+          	<div class="actions">
+             <%= button_to "cancel Subscription",student_subscription_path, :method=>'delete' %> 
+           </div>
+          </p>
+
+          <p>
+           <%= form_for :splan, url: student_subscription_path,  method: "put" do |f| %>
+                <div class="">
+                      <%= f.label 'Choose Plan' %>
+                      <%= f.collection_select(:plan_id, Splan.all, :id, :name) %>
+                  </div>
+                   <div class="actions">
+                    <%= f.submit "Reactivate" %>
+                  </div>
+            <% end %> 
+          </p>
+          
 
 			</div>
 		</div>
@@ -34,6 +81,8 @@
 						Trains at <%= current_user.school_name %>
 					</p>
 					<a href="#" class="btn btn-default btn-round">View</a>
+					 <%= button_to "Give a discout to this user",student_subscription_discount_path, :method=>'put' %> 
+           </div>
 				</div>
 			</div>
 		</div>

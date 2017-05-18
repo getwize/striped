@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507195646) do
+ActiveRecord::Schema.define(version: 20170518130003) do
+
+  create_table "plans", force: :cascade do |t|
+    t.string   "name"
+    t.string   "stripe_id"
+    t.string   "interval"
+    t.integer  "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "splans", force: :cascade do |t|
+    t.string   "name"
+    t.string   "stripe_id"
+    t.string   "interval"
+    t.integer  "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "currency"
+  end
 
   create_table "students", force: :cascade do |t|
     t.string   "first_name"
@@ -19,7 +38,6 @@ ActiveRecord::Schema.define(version: 20170507195646) do
     t.string   "phone_number"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-    t.integer  "user_id"
     t.string   "street_address"
     t.string   "city"
     t.string   "state"
@@ -31,6 +49,12 @@ ActiveRecord::Schema.define(version: 20170507195646) do
     t.string   "uniform_size"
     t.string   "belt_size"
     t.date     "birthday"
+    t.integer  "user_id"
+    t.integer  "splan_id"
+    t.string   "stripe_id"
+    t.string   "sub_id"
+    t.index ["splan_id"], name: "index_students_on_splan_id"
+    t.index ["user_id"], name: "index_students_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,7 +78,16 @@ ActiveRecord::Schema.define(version: 20170507195646) do
     t.string   "zip"
     t.string   "phone_number"
     t.string   "school_name"
+    t.integer  "plan_id"
+    t.integer  "role"
+    t.string   "stripe_id"
+    t.string   "sub_id"
+    t.string   "publishable_key"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "access_code"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["plan_id"], name: "index_users_on_plan_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

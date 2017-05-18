@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+  get 'student_plans/new'
+
   resources :students
-  devise_for :users, controllers: { registrations: "users/registrations", sessions: "users/sessions" }
+  resources :charges
+  resources :subscriptions
+  resources :student_plans
+  resources :student_subscriptions
+  resources :student_subscription_discounts
+  devise_for :users, controllers: { registrations: "users/registrations", sessions: "users/sessions" ,:omniauth_callbacks => "omniauth_callbacks"}
 
   get 'owner' => 'students#owner'
 

@@ -74,6 +74,15 @@
                                         </div>
                                     </div>
                                     <% end %>
+
+                                     <div class="input-group">
+                                        <span class="input-group-addon">
+                                            
+                                        </span>
+                                        <%= f.collection_select(:plan_id, Plan.all, :id, :name, class: "form-control") %>
+                                            <span class="material-input"></span>
+                                        </div>
+
                                     <div class="input-group">
                                         <span class="input-group-addon">
                                             <i class="material-icons">email</i>

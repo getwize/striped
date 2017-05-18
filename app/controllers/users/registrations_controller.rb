@@ -2,12 +2,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
 	layout 'signup', only: [:new]
 
 	def after_sign_up_path_for(resource)
-		'/users/edit'
+		'/charges/new'
+	end
+
+	def new
+		build_resource({})
+		unless params[:plan].nil?
+      		@plan = Plan.find_by!(stripe_id: params[:plan])
+      		resource.plan = @plan
+    	end
+    	yield resource if block_given?
+    	respond_with self.resource
 	end
 
 	def create
 		build_resource(sign_up_params)
-
+		plan = Plan.find_by!(id: (params[:user][:plan_id]).to_i)
+    	resource.role = User.roles[plan.stripe_id]
 		resource.save
 		yield resource if block_given?
 		if resource.persisted?
@@ -27,6 +38,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 		end
 	end
 
+
+	
+
 	private
 
 	def response_to_sign_up_failure(resource)
@@ -36,4 +50,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 			redirect_to new_user_registration_path, alert: "Email already exists."
 		end
 	end
+
+	 def sign_up_params
+	    params.require(:user).permit(:email,
+	    :password, :password_confirmation, :plan_id)
+	  end
 end

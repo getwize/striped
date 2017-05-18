@@ -8,6 +8,7 @@ end
 
 
 gem 'rails', '~> 5.0.2'
+gem 'stripe'
 gem 'puma', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
@@ -19,6 +20,9 @@ gem 'sass-rails', '>= 3.2'
 gem 'devise'
 gem 'material_design_lite-sass'
 gem "font-awesome-rails"
+gem 'omniauth-stripe-connect'
+gem 'figaro'
+
 
 group :production do
 	gem 'pg'
