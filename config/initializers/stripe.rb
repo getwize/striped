@@ -8,7 +8,6 @@ if Rails.env.production?
 	}
 
 	Stripe.api_key = Rails.configuration.stripe[:secret_key]
-
  else
 
 	 Rails.configuration.stripe = {
@@ -17,5 +16,4 @@ if Rails.env.production?
 	}
 
 	Stripe.api_key = Rails.configuration.stripe[:secret_key]
-
 end
