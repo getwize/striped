@@ -3,6 +3,8 @@ class SubscriptionsController < ApplicationController
 
 #resubscribes a user who has cancelled
 	def create
+		@user = current_user
+		 @plan = Plan.find_by!(id: @user.plan_id)
 		if Rails.env.production?
      		 Stripe.api_key = ENV['Javier_Secret_Key']
 
@@ -11,7 +13,7 @@ class SubscriptionsController < ApplicationController
      	end
 
 		 subscription = Stripe::Subscription.retrieve(current_user.sub_id)
-		 subscription.plan = current_user.plan_id
+		 subscription.plan = @plan.stripe_id
 		 subscription.save
 		 redirect_to root_path
 
