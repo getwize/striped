@@ -5,7 +5,7 @@ before_action :authenticate_user!
 		@user = current_user
   		@plan = Plan.find_by!(id: @user.plan_id)
 	end
-	#creates a subscription on stripe
+	#creates a     subscription on stripe
 	def create
 	  # Amount in cents
 	  @user = current_user
