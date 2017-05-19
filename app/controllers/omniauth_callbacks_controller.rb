@@ -8,7 +8,7 @@ class OmniauthCallbacksController < ApplicationController
       access_code: request.env["omniauth.auth"].credentials.token,
       publishable_key: request.env["omniauth.auth"].info.stripe_publishable_key
     })
-      # anything else you need to do in response..
+      # anything else you need to do     in response..
       redirect_to root_path
       #set_flash_message(:notice, :success, :kind => "Stripe") if is_navigational_format?
     else
