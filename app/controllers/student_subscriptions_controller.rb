@@ -1,11 +1,14 @@
 class StudentSubscriptionsController < ApplicationController
 	before_action :authenticate_user!
-#subscribes a new student to stripe
-	
-	
-	#resubscribes cancelled students
 
+	def create
+		
+					
+	end
+	
+	
 	def update
+		#subscribes a new student to stripe
 		@student = Student.find_by(id: params[:id])
 		@user = current_user
 		if @student.sub_id == nil
@@ -31,6 +34,8 @@ class StudentSubscriptionsController < ApplicationController
 		      redirect_to root_path
 
       else
+      	#resubscribes cancelled students
+
 		Stripe.api_key = ENV['Javier_Secret_Key']
 
 		@plan = Splan.find_by!(id: @student.splan_id)
