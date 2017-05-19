@@ -52,10 +52,7 @@
 
           <p>
            <%= form_for :splan, url: student_subscription_path,  method: "put" do |f| %>
-                <div class="">
-                      <%= f.label 'Choose Plan' %>
-                      <%= f.collection_select(:plan_id, Splan.all, :id, :name) %>
-                  </div>
+                
                    <div class="actions">
                     <%= f.submit "Reactivate" %>
                   </div>
