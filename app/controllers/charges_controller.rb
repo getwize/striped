@@ -11,6 +11,13 @@ before_action :authenticate_user!
 	  @user = current_user
 	  @plan = Plan.find_by!(id: @user.plan_id)
 	  token = params[:stripeToken]
+
+	  if Rails.env.production?
+     		 Stripe.api_key = ENV['Javier_Secret_Key']
+    else
+     		 Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+     end
+
 	  customer = Stripe::Customer.create(
 	    email: current_user.email,
 	    source: token
