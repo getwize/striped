@@ -29,6 +29,7 @@ class StudentsController < ApplicationController
     @user = current_user
     @student = Student.find_by(id: params[:id])
     @plan = Splan.find_by!(id: @student.splan_id)
+    Stripe.api_key = ENV['Javier_user_Secret_Key']
     @publishable_key = ENV['Javier_user_Publishable_key']
  end
   # POST /students
