@@ -29,9 +29,8 @@ class StudentsController < ApplicationController
     @user = current_user
     @student = Student.find_by(id: params[:id])
     @plan = Splan.find_by!(id: @student.splan_id)
-    @publishable_key = ENV['Javier_Publishable_Key']
-  end
-
+    @publishable_key = ENV['Javier_user_Publishable_key']
+ end
   # POST /students
   # POST /students.json
   def create

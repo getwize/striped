@@ -77,10 +77,30 @@
 					<p class="card-description">
 						Trains at <%= current_user.school_name %>
 					</p>
-					<a href="#" class="btn btn-default btn-round">View</a>
-					 <%= button_to "Give a discout to this student",student_subscription_discount_path, :method=>'put' %> 
+					<a href="#" class="btn btn-default btn-round">View</a><br>
+					 <%= link_to "create a discount",new_student_subscription_discount_path %> 
+					 <br><br>
 
-					 <%= button_to "change billing cycle",billing_path, :method=> 'put' %>
+					 <%= form_for :discount, url: student_subscription_discount_path, :method=>'put' do |f| %>
+			                <div class="">
+			                      <%= f.label 'Choose discount' %>
+			                      <%= f.collection_select(:coup_id, Coupon.where(user: current_user),:id,:coup_id) %>
+			                  </div>
+			                   <div class="actions">
+			                    <%= f.submit "claim discount" %>
+			                  </div>
+           			 <% end %> 
+           			 <br><br>
+
+					 <%= form_for :date, url: billing_path, :method=>'put' do |f| %>
+			                <div class="">
+			                      <%= f.label :date %> <%= f.date_select(:date, :order => [:month, :day, :year]) %>
+			                  </div>
+			                   <div class="actions">
+			                    <%= f.submit "change billing cycle" %>
+			                  </div>
+           			 <% end %> 
+					 
 			 <%= form_tag student_charge_path , method: "put" do %>
               <article>
                 <% if flash[:error].present? %>

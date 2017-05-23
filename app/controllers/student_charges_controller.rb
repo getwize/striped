@@ -7,7 +7,7 @@ before_action :authenticate_user!
   		@user = current_user
 	  	@plan = Plan.find_by!(id: @user.plan_id)
 		if Rails.env.production?
-     		 Stripe.api_key = ENV['Javier_Secret_Key']
+     		 Stripe.api_key = ENV['Javier_user_Secret_Key'] #@user.access_code
     	else
      		 Stripe.api_key = ENV['STRIPE_SECRET_KEY']
      	end
