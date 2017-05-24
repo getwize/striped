@@ -10,6 +10,6 @@ class User < ApplicationRecord
   
   belongs_to :plan
   has_many :students, dependent: :destroy
-  has_many :splans
-  has_many :coupons
+  has_many :splans, dependent: :destroy
+  has_many :coupons, dependent: :destroy
 end

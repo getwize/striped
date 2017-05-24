@@ -4,6 +4,7 @@ class StudentSubscriptionDiscountsController < ApplicationController
 		@coupon = Coupon.new
 	end
 
+#creates a coupon on stripe
 	def create
 		@user = current_user
 		@coupon = @user.coupons.new(coupon_params)
@@ -42,7 +43,7 @@ class StudentSubscriptionDiscountsController < ApplicationController
 			redirect_to root_path
 		
 	end
-
+#creates a discount/discounts a subscription
 	def update
 		@user = current_user
 		@student = Student.find_by(id: params[:id])

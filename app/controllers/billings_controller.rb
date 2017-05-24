@@ -1,5 +1,7 @@
 class BillingsController < ApplicationController
 	before_action :authenticate_user!
+
+	#changes billing interval
 	def update
 		@student = Student.find_by(id: params[:id])
 		@user = current_user
