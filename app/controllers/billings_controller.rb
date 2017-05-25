@@ -8,7 +8,7 @@ class BillingsController < ApplicationController
 		@params = params[:date]
 		@date = Date.new(params[:date]["date(1i)"].to_i,params[:date]["date(2i)"].to_i,params[:date]["date(3i)"].to_i).to_time.to_i
 		puts ("#{@date}")
-		Stripe.api_key = ENV['Javier_user_Secret_Key']
+		Stripe.api_key = ENV['@user.access_code'] #replace with @user.access_code
 		subscription = Stripe::Subscription.retrieve(@student.sub_id)
 			subscription.trial_end = @date
 			subscription.prorate = false

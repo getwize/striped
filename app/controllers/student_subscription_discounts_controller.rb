@@ -8,7 +8,7 @@ class StudentSubscriptionDiscountsController < ApplicationController
 	def create
 		@user = current_user
 		@coupon = @user.coupons.new(coupon_params)
-		Stripe.api_key = ENV['Javier_user_Secret_Key']
+		Stripe.api_key = ENV['@user.access_code'] #replace with @user.access_code
 
 		if @coupon.duration == "once"
 		
@@ -50,7 +50,7 @@ class StudentSubscriptionDiscountsController < ApplicationController
 		@plan = Splan.find_by!(id: @student.splan_id)
 		@param = Coupon.new(claim_params)
 		@coupon = Coupon.find_by(id: @param.coup_id)
-		Stripe.api_key = ENV['Javier_user_Secret_Key']
+		Stripe.api_key = ENV['@user.access_code'] #replace with @user.access_code
 
 		Stripe::Subscription.create(
 			  :customer => @student.stripe_id,
